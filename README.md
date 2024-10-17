@@ -2,6 +2,8 @@
 
 - **Lesson 3**: Basic Scene (3js code structure)
 
+- **Lesson 4**: 3js Project Setup with node.js and oject transformation(position, rotation, scaling and quaternion), axes helper, distanceTo(), length() 
+
 
 
 
