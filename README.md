@@ -4,6 +4,8 @@
 
 - **Lesson 4**: 3js Project Setup with node.js and oject transformation(position, rotation, scaling and quaternion), axes helper, distanceTo(), length() 
 
+- **Lesson 5**: Animation
+
 
 
 
