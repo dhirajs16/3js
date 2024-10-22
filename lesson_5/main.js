@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 
-
 const canvas = document.getElementById('animate')
 
 // scene
@@ -92,12 +91,16 @@ const tick = () => {
 With elapsedTime() function
 
 */
+
+
+
+
 const clock = new THREE.Clock()
 
 const tick = () => {
 
   const elapsedTime = clock.getElapsedTime()
-  console.log(elapsedTime)
+  // console.log(elapsedTime)
   
   cube.position.y = Math.sin(elapsedTime)
   cube.position.x = Math.cos(elapsedTime)
@@ -107,4 +110,3 @@ const tick = () => {
 }
 
 // tick() 
-//20:00
