@@ -6,6 +6,8 @@
 
 - **Lesson 5**: Animation
 
+- **Lesson 6**: Controls:`OrbitalControls`
+
 
 
 
@@ -19,3 +21,5 @@ cd myproject
 npm install
 
 ```
+
+8, 0:0
