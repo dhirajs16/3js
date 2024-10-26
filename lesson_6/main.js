@@ -15,18 +15,30 @@ const mesh = new THREE.Mesh(
 )
 scene.add(mesh)
 
-// camera
+// size and resize
 const size = {
-    width: 800,
-    height: 600
+    width: window.innerWidth,
+    height: window.innerHeight
 }
 const aspectRatio = size.width / size.height
+
+window.addEventListener('resize', () => {
+    size.width = window.innerWidth
+    size.height = window.innerHeight
+
+    camera.aspect = size.width / size.height
+    camera.updateProjectionMatrix()
+    renderer.setSize(size.width, size.height)
+})
+
+// camera
 const camera = new THREE.PerspectiveCamera(45, aspectRatio, 0.1, 100)
 camera.position.set(0, 0, 6)
 scene.add(camera)
 
 // controls
 const controls = new OrbitControls(camera, canvas)
+controls.enabled = true
 controls.enableDamping = true
 
 // renderer

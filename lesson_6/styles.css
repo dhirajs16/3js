@@ -1,0 +1,13 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none;
+    overflow: hidden;
+}
+
+
+#display {
+    top: 0;
+    left: 0;
+    outline: none;
+}
