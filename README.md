@@ -6,7 +6,7 @@
 
 - **Lesson 5**: Animation
 
-- **Lesson 6**: Controls:`OrbitalControls`, viewport, windows, resize event
+- **Lesson 6**: Controls:`OrbitalControls`, viewport, windows, resize event, pixel ratio and double click event
 
 
 
@@ -22,4 +22,4 @@ npm install
 
 ```
 
-8, 12:41
+9, 
