@@ -8,7 +8,7 @@
 
 - **Lesson 6**: Controls:`OrbitalControls`, viewport, windows, resize event, pixel ratio and double click event.
 
-- **Lesson 7**:
+- **Lesson 7**: Types of Geometry(v9), Mesh Wireframe. 
 
 
 
