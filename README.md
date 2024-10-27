@@ -13,6 +13,7 @@
 
 
 <hr>
+
 ### **Vite app setup**
 ```
 npm init vite myproject
