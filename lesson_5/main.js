@@ -1,112 +1,119 @@
 import * as THREE from 'three'
+import { OrbitControls} from 'three/addons/controls/OrbitControls.js'
+import * as dat from 'dat.gui'
 
-const canvas = document.getElementById('animate')
+
+const gui = new dat.GUI()
+const canvas = document.getElementById('id_canvas')
 
 // scene
 const scene = new THREE.Scene()
 
-
 // mesh
-const cube = new THREE.Mesh(
-  new THREE.BoxGeometry(1, 1, 1, 1),
-  new THREE.MeshBasicMaterial({color: 0xff0000})
-)
-scene.add(cube)
+const geometry = new THREE.BufferGeometry()
 
+const vertices = new Float32Array(50*3*3)
 
-//camera
-const size = {
-  width: 800,
-  height: 400
+for(let i = 0; i <= 5*3*3; i++)
+{
+  vertices[i] = Math.random()
 }
-const aspect_ratio = size.width/size.height
+// const vertices = new Float32Array([
+//   0, 0, 0,
+//   3, 0, 0,
+//   1, 2, 0,
+// ])
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3))
+const material = new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true})
+const mesh = new THREE.Mesh(geometry, material) 
 
-const camera = new THREE.PerspectiveCamera(75, aspect_ratio)
-camera.position.set(2, 1, 5)
+// const mesh = new THREE.Mesh(
+//   new THREE.BoxGeometry(1, 1, 1, 2, 2, 2),
+//   new THREE.MeshBasicMaterial({color: 0xff0000, wireframe:true})
+// )
+scene.add(mesh)
+
+// camera
+const size = {
+  width: window.innerWidth,
+  height: window.innerHeight 
+}
+const camera = new THREE.PerspectiveCamera(50, size.width/size.height, 0.1, 100)
 scene.add(camera)
+camera.position.set(0, 0, 8)
+
+// controls
+const controls = new OrbitControls(camera, canvas)
+// controls.enabled = false
+controls.enableDamping = true
 
 
 // renderer
-const renderer = new THREE.WebGLRenderer({canvas:canvas})
+const renderer = new THREE.WebGLRenderer({canvas: canvas})
 renderer.setSize(size.width, size.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+// windows functions
+window.addEventListener('resize', () => {
+  size.width = window.innerWidth
+  size.height = window.innerHeight
+  camera.aspect = size.width/size.height
+  camera.updateProjectionMatrix()
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.setSize(size.width, size.height)
+})
+
+window.addEventListener('dblclick', () => {
+  !document.fullscreenElement? canvas.requestFullscreen() : document.exitFullscreen()
+})
+
+
+
+// debug
+// syntax: gui.add(element, 'attr').twicks
+
+// chain like
+gui
+  .addColor({ color: material.color.getHex() }, 'color')
+  .onChange((value) => {
+  material.color.set(value);
+})
+
+
+gui
+  .add(mesh, 'visible')
+
+gui
+.add(material, 'wireframe')
+
+
+gui
+  .add(mesh.position, 'y')
+  .min(-3)
+  .max(3)
+  .step(0.01)
+  .name('elvation')
+
+// simple one
+gui.add(mesh.position, 'x', -5, 5, 0.1)
+// grouped in a folder
+const meshFolder = gui.addFolder('Mesh')
+meshFolder.add(mesh.rotation, 'x', 0, Math.PI * 2)
+meshFolder.add(mesh.rotation, 'y', 0, Math.PI * 2)
+meshFolder.add(mesh.rotation, 'z', 0, Math.PI * 2)
+meshFolder.open()
+const cameraFolder = gui.addFolder('Camera')
+cameraFolder.add(camera.position, 'z', 0, 10)
+cameraFolder.open()
+
+
 
 
 // animate
-/* 
-The use of the window.requestAnimationFrame(recurring_func) function
-is to the recurring_func in the next frame, and when it transition to 
-next frame it calls the recurring_func again the next frame and again 
-and again....
-It is like a recursive function that call itself again and again. 
-The instructions coded like move in x-axia by 1 unit in every
-frame act as an animation
-
-
-const tick = () => {
-  
-  // animation instruction
-  cube.rotation.z += 0.05
-  // cube.position.x += 0.05
-
-  
-  // render the frame
+const animate = () => {
+  controls.update()
   renderer.render(scene, camera)
-  // call tick function again and again
-  window.requestAnimationFrame(tick)
-}
-*/
-
-
-
-
-
-
-/*
-Since fps varies from device to device so to bring uniformity in
-animation we use time function.
-
-
-
-let time = Date.now()
-
-const tick = () => {
-  let currtime = Date.now()
-  let deltime = currtime - time
-  time = currtime
-  console.log(deltime)
-  
-  
-  cube.rotation.z += 0.002*deltime
-  renderer.render(scene, camera)
-  window.requestAnimationFrame(tick)
-}
-*/
-
-
-
-
-
-
-/*
-With elapsedTime() function
-
-*/
-
-
-
-
-const clock = new THREE.Clock()
-
-const tick = () => {
-
-  const elapsedTime = clock.getElapsedTime()
-  // console.log(elapsedTime)
-  
-  cube.position.y = Math.sin(elapsedTime)
-  cube.position.x = Math.cos(elapsedTime)
-
-  renderer.render(scene, camera)
-  window.requestAnimationFrame(tick)
+  window.requestAnimationFrame(animate)
 }
 
-// tick() 
+animate()
