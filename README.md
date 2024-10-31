@@ -9,6 +9,7 @@
 - **Lesson 4**: Controls:`OrbitalControls`, viewport, windows, resize event, pixel ratio and double click event.
 
 - **Lesson 5**: Types of Geometry(v9), Mesh Wireframe, BufferGeometry with float32array, `dat.gui`.
+- **Lesson 6**: Texture
 
 
 
@@ -16,7 +17,7 @@
 
 ### **Vite app setup**
 ```
-npm init vite myproject
+npm create vite@latest myproject
 cd myproject
 
 npm install three
@@ -24,4 +25,4 @@ npm run dev
 
 ```
 
-9, 
+11, 13:23
