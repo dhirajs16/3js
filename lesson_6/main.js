@@ -6,6 +6,34 @@ import * as dat from 'dat.gui'
 const canvas = document.getElementById('id_canvas')
 
 
+// load texture
+
+// Conventional Way
+// const image = new Image()
+// const texture = new THREE.Texture(image)
+// image.onload = () => texture.needsUpdate = true
+// image.src = './Assets/color.jpg'
+
+// loading manager: it is useful when you are loading multiple assets: fonts, texture and others
+const loadingManager = new THREE.LoadingManager()
+// loadingManager.onStart = () => console.log("Started")
+// loadingManager.onLoad = () => console.log("Loaded")
+// loadingManager.onProgress = () => console.log("Progressed")
+// loadingManager.onError = (err) => console.log("LoadingManager Error:", err)
+
+const textureLoader = new THREE.TextureLoader(loadingManager)
+
+const colorTexture = textureLoader.load('./Assets/door/color.jpg')
+// const alphaTexture = textureLoader.load('./Assets/door/alpha.jpg')
+// const ambientTexture = textureLoader.load('./Assets/door/ambientOcclusion.jpg')
+// const heightTexture = textureLoader.load('./Assets/door/height.jpg')
+// const metalnessTexture = textureLoader.load('./Assets/door/metalness.jpg')
+// const normalTexture = textureLoader.load('./Assets/door/normal.jpg')
+// const roughnessTexture = textureLoader.load('./Assets/door/roughness.jpg')
+
+// const minecraftTexture = textureLoader.load('./Assets/minecraft.png')
+
+
 // scene
 const scene = new THREE.Scene()
 
@@ -17,14 +45,14 @@ const size = {
 }
 
 const camera = new THREE.PerspectiveCamera(50, size.width/size.height, 0.1, 100)
-camera.position.set(0,0,8)
+camera.position.set(0,0,4)
 scene.add(camera)
 
 
 // mesh
 const cube = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1, 2, 2, 2),
-    new THREE.MeshBasicMaterial({color: 0xff0000})
+    new THREE.MeshBasicMaterial({map: colorTexture})
 )
 scene.add(cube)
 
