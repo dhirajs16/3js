@@ -15,14 +15,13 @@ const canvas = document.getElementById('id_canvas')
 // image.src = './Assets/color.jpg'
 
 // loading manager: it is useful when you are loading multiple assets: fonts, texture and others
-const loadingManager = new THREE.LoadingManager()
+// const loadingManager = new THREE.LoadingManager()
 // loadingManager.onStart = () => console.log("Started")
 // loadingManager.onLoad = () => console.log("Loaded")
 // loadingManager.onProgress = () => console.log("Progressed")
 // loadingManager.onError = (err) => console.log("LoadingManager Error:", err)
 
-const textureLoader = new THREE.TextureLoader(loadingManager)
-
+const textureLoader = new THREE.TextureLoader()  //(loadingManager)
 const colorTexture = textureLoader.load('./Assets/door/color.jpg')
 // const alphaTexture = textureLoader.load('./Assets/door/alpha.jpg')
 // const ambientTexture = textureLoader.load('./Assets/door/ambientOcclusion.jpg')
@@ -30,9 +29,24 @@ const colorTexture = textureLoader.load('./Assets/door/color.jpg')
 // const metalnessTexture = textureLoader.load('./Assets/door/metalness.jpg')
 // const normalTexture = textureLoader.load('./Assets/door/normal.jpg')
 // const roughnessTexture = textureLoader.load('./Assets/door/roughness.jpg')
-
 // const minecraftTexture = textureLoader.load('./Assets/minecraft.png')
 
+
+// Repeat texture on the mesh
+// colorTexture.repeat.set(2, 3) //.repeat is vector2 so it has two coordinates
+// colorTexture.wrapS = THREE.RepeatWrapping //With RepeatWrapping the texture will simply repeat to infinity.
+// colorTexture.wrapT = THREE.RepeatWrapping
+
+// offset
+// colorTexture.offset.set(0.5, 0.2) //it is a vector2 as well 
+// colorTexture.offset.x = 0.5 //offset shifts the texture over the mesh here by 50%
+
+// Rotating the texture over mesh: Rotation is on single plane i.e., face of the mesh (so no axis thing)
+colorTexture.rotation = Math.PI/4 //45 deg, PI = 180, (-) clockwise & (+) anticlockwise 
+
+// Since it is rotating from (0, 0) i.e., left bottom so move the point of rotation to
+// the center of the texture
+colorTexture.center.set(0.5, 0.5)
 
 // scene
 const scene = new THREE.Scene()
