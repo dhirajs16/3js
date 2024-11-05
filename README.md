@@ -9,7 +9,7 @@
 - **Lesson 4**: Controls:`OrbitalControls`, viewport, windows, resize event, pixel ratio and double click event.
 
 - **Lesson 5**: Types of Geometry(v9), Mesh Wireframe, BufferGeometry with float32array, `dat.gui`.
-- **Lesson 6**: Texture
+- **Lesson 6**: Texture(v11), loading manager, texture transformation(repeat, rotate), mipmapping
 
 
 
