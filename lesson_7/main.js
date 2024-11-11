@@ -25,10 +25,30 @@ const matcaps8Texture = textureLoader.load('./static/matcaps/3.png')
 
 
 // meshes
-const material = new THREE.MeshBasicMaterial({map: matcaps8Texture, wireframe:false})
+
+// Material
+
+// 1. MeshBasicMaterial
+// https://threejs.org/docs/#api/en/materials/MeshBasicMaterial
+
+const material = new THREE.MeshBasicMaterial({
+  color: 0x00ff00, // green color
+  wireframe: true, // Render as wireframe
+  map: matcaps8Texture,
+  // opacity: 0.8, // 80% opacity
+  // transparent: true, // Enable transparency
+  // side: THREE.DoubleSide, // Render both sides
+  // blending: THREE.NormalBlending, // Normal blending mode
+  // depthTest: true, // Enable depth testing
+  // depthWrite: true, // Write depth information
+  // alphaTest: 0.5, // Alpha test threshold
+  // premultipliedAlpha: false // No premultiplied alpha
+})
+//INDIVIDUALLY=========>
 // const material = new THREE.MeshBasicMaterial()
 // material.color.set(0xff0000)
 // material.wireframe = true
+
 
 const sphere = new THREE.Mesh(
   new THREE.SphereGeometry(),

@@ -24,5 +24,81 @@ npm install three
 npm run dev
 
 ```
+<hr>
 
-12, 19:23
+## **Lesson 7**
+
+### Properties of MeshBasicMaterial:
+
+1. **Color**: Sets the color of the material. 
+   ```javascript
+   material.color.set(0xffffff); // white color
+   ```
+
+2. **Map**: Sets a texture map for the material.
+   ```javascript
+   material.map = new THREE.TextureLoader().load('path/to/texture.jpg');
+   ```
+
+3. **Wireframe**: Renders the material as a wireframe.
+   ```javascript
+   material.wireframe = true;
+   ```
+
+4. **Wireframe Line Width**: Sets the width of the wireframe lines.
+   ```javascript
+   material.wireframeLinewidth = 1;
+   ```
+
+5. **Opacity**: Sets the opacity of the material.
+   ```javascript
+   material.opacity = 0.5; // 50% transparent
+   ```
+
+6. **Transparent**: Enables transparency.
+   ```javascript
+   material.transparent = true;
+   ```
+
+7. **Side**: Specifies which side of faces will be rendered - front, back, or both.
+   ```javascript
+   material.side = THREE.DoubleSide;
+   ```
+
+8. **Visible**: Sets the material to be visible or not.
+   ```javascript
+   material.visible = true;
+   ```
+
+9. **Fog**: Whether the material is affected by scene fog.
+   ```javascript
+   material.fog = true;
+   ```
+
+10. **Blending**: How the material blends with the rest of the scene.
+    ```javascript
+    material.blending = THREE.NormalBlending;
+    ```
+
+11. **Depth Test**: Whether to use depth testing.
+    ```javascript
+    material.depthTest = true;
+    ```
+
+12. **Depth Write**: Whether rendering this material has any effect on the depth buffer.
+    ```javascript
+    material.depthWrite = true;
+    ```
+
+13. **Alpha Test**: Sets a threshold value for alpha testing.
+    ```javascript
+    material.alphaTest = 0.5;
+    ```
+
+14. **PremultipliedAlpha**: Whether the alpha value is premultiplied.
+    ```javascript
+    material.premultipliedAlpha = false;
+    ```
+
+
+12, 25:00
