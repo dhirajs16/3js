@@ -11,7 +11,7 @@
 - **Lesson 5**: Types of Geometry(v9), Mesh Wireframe, BufferGeometry with float32array, `dat.gui`.
 - **Lesson 6**: Texture(v11), loading manager, texture transformation(repeat, rotate), mipmapping
 
-
+- **Lesson 7**: Material(v12) and it's types, Properties of MeshBasicMaterial, Light reactive materials. 
 
 <hr>
 
@@ -101,4 +101,4 @@ npm run dev
     ```
 
 
-12, 25:00
+12, 45:00
