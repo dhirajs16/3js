@@ -10,6 +10,7 @@
 
 - **Lesson 5**: Types of Geometry(v9), Mesh Wireframe, BufferGeometry with float32array, `dat.gui`.
 - **Lesson 6**: Texture(v11), loading manager, texture transformation(repeat, rotate), mipmapping
+- **Lesson 7**: Materials(v12), MeshBasicMaterial & it's properties.
 
 - **Lesson 7**: Material(v12) and it's types, Properties of MeshBasicMaterial, Light reactive materials. 
 
@@ -50,7 +51,7 @@ npm run dev
    material.wireframeLinewidth = 1;
    ```
 
-5. **Opacity**: Sets the opacity of the material.
+5. **Opacity**: Sets the opacity of the material (works when the transparency is enabled).
    ```javascript
    material.opacity = 0.5; // 50% transparent
    ```
@@ -101,4 +102,8 @@ npm run dev
     ```
 
 
+<<<<<<< HEAD
 12, 45:00
+=======
+12, 25:00
+>>>>>>> 046a51b3cd9453f39f7955d44ff3958472d89a47
