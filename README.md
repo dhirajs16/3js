@@ -101,9 +101,3 @@ npm run dev
     material.premultipliedAlpha = false;
     ```
 
-
-<<<<<<< HEAD
-12, 45:00
-=======
-12, 25:00
->>>>>>> 046a51b3cd9453f39f7955d44ff3958472d89a47
