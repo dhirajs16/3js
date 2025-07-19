@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-
+import * as dat from 'dat.gui'
 
 // domElement
 const canvas = document.getElementById('display')
@@ -107,9 +107,17 @@ scene.add(pointLight)
 /*
 6. MeshPhongMaterial
 */
-const material = new THREE.MeshPhongMaterial({shininess: 1000, specular:new THREE.Color(0xff0000)})
+// const material = new THREE.MeshPhongMaterial({shininess: 1000, specular:new THREE.Color(0xff0000)})
 // specular decides the color of the shininess
 
+
+/*
+7. MeshStandardMaterial
+*/
+const material = new THREE.MeshStandardMaterial()
+material.metalness = 0.45
+material.roughness = 0.5
+material.side = THREE.DoubleSide
 
 const sphere = new THREE.Mesh(
   new THREE.SphereGeometry(),
@@ -162,3 +170,8 @@ window.addEventListener('resize', () => {
 window.addEventListener('dblclick', () => {
   !document.fullscreenElement? canvas.requestFullscreen() : document.exitFullscreen()
 })
+
+
+const gui = new dat.GUI()
+gui.add(material, 'metalness', 0, 1, 0.1)
+gui.add(material, 'roughness', 0, 1, 0.1)
